@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rina & Saki Journal — 浜松の素敵なお店をふたりでめぐるカフェジャーナル。">
+  <meta name="theme-color" content="#f8f5f2">
+  <title>Rina &amp; Saki Journal | 浜松の素敵なお店めぐり</title>
+
+  <!-- フォントはCSSで読み込みます。JavaScriptは使っていません。 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html" aria-label="Rina & Saki Journal ホーム">
+        <span class="logo-serif">Rina &amp; Saki</span>
+        <span class="logo-script">Journal</span>
+      </a>
+
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a class="nav-link is-current" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="list.html">Cafe List</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- メインのカフェ写真：assets/cafe.jpg -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <div class="hero-copy">
+        <h1 class="hero-heading" id="hero-title">
+          <span class="hero-serif">Rina &amp; Saki</span>
+          <span class="hero-script">Journal</span>
+        </h1>
+        <p class="hero-caption">浜松の素敵なお店めぐり</p>
+      </div>
+
+      <!-- 透過PNGの人物イラスト：assets/rina-saki.png -->
+      <img
+        class="hero-people"
+        src="assets/rina-saki.png"
+        alt="カフェでおしゃべりしながら過ごすRinaとSakiのイラスト"
+        width="1254"
+        height="780"
+      >
+    </section>
+
+    <!-- これから行きたいお店 -->
+    <section class="wish-section" aria-label="行きたいお店へのリンク">
+      <a class="wish-link" href="hext.html">
+        <span>これから行きたいお店</span>
+        <span class="wish-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- 今後追加予定の4店舗。写真は使わず、無地のカードにしています。 -->
+    <section class="coming-section" aria-label="今後紹介するお店">
+      <div class="coming-grid">
+        <a class="coming-card coming-card--one" href="comingsoon.html" aria-label="Coming Soon 1">
+          <span>Coming Soon</span>
+        </a>
+        <a class="coming-card coming-card--two" href="comingsoon.html" aria-label="Coming Soon 2">
+          <span>Coming Soon</span>
+        </a>
+        <a class="coming-card coming-card--three" href="comingsoon.html" aria-label="Coming Soon 3">
+          <span>Coming Soon</span>
+        </a>
+        <a class="coming-card coming-card--four" href="comingsoon.html" aria-label="Coming Soon 4">
+          <span>Coming Soon</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© Rina &amp; Saki Journal</small>
+  </footer>
+</body>
+</html>
