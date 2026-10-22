@@ -7,8 +7,381 @@
   <meta name="theme-color" content="#f8f5f2">
   <title>Rina &amp; Saki Journal | 浜松の素敵なお店めぐり</title>
 
-  <!-- フォントはCSSで読み込みます。JavaScriptは使っていません。 -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSSもこのHTMLファイルの中にまとめています。 -->
+  <style>
+/*
+ * Rina & Saki Journal
+ * HTML + CSSのみで制作 / JavaScript不使用
+ * 画像：pict/top-pict.jpg と pict/rina-saki.png の2点のみ
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&family=Noto+Serif+JP:wght@400;500&display=swap');
+
+:root {
+  --paper: #f8f5f2;
+  --paper-deep: #f4eeea;
+  --ink: #604d43;
+  --rose-brown: #a88b7f;
+  --rose-brown-hover: #937568;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-script: 'Great Vibes', 'Z003', 'Apple Chancery', 'Brush Script MT', cursive;
+  --font-japanese: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 3px solid #734d3f;
+  outline-offset: 5px;
+}
+
+/* ─── Header ─── */
+.site-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 76px;
+  background: rgba(250, 247, 245, 0.97);
+}
+
+.header-inner {
+  height: 100%;
+  padding-inline: 5% 7.1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  min-width: 0;
+  color: #544439;
+}
+
+.logo-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.logo-script {
+  font-family: var(--font-script);
+  font-size: clamp(34px, 3.45vw, 51px);
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 11px;
+  transform: translateY(7px) rotate(-5deg);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  align-self: stretch;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: 0.008em;
+  transition: color 160ms ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #8b6b5e;
+}
+
+.nav-link:hover::after,
+.nav-link.is-current::after {
+  transform: scaleX(1);
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  height: clamp(510px, 42vw, 675px);
+  background: #c5bbab url('pict/top-pict.jpg') center 73% / cover no-repeat;
+}
+
+.hero-shade {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 22, 18, 0.34) 0%, rgba(25, 27, 22, 0.20) 31%, rgba(26, 27, 22, 0.01) 63%);
+  pointer-events: none;
+}
+
+.hero-copy {
+  position: absolute;
+  top: 31.2%;
+  left: 7.5%;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 2px 9px rgba(36, 28, 23, 0.34);
+}
+
+.hero-heading {
+  margin: 0;
+  font-weight: 400;
+}
+
+.hero-serif {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(58px, 5.6vw, 84px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0.012em;
+  white-space: nowrap;
+}
+
+.hero-script {
+  display: block;
+  margin-top: 19px;
+  padding-left: 1px;
+  font-family: var(--font-script);
+  font-size: clamp(70px, 6.7vw, 102px);
+  font-weight: 400;
+  line-height: 0.91;
+  transform: rotate(-4deg);
+  transform-origin: left center;
+}
+
+.hero-caption {
+  margin: 25px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.94);
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-japanese);
+  font-size: clamp(18px, 1.63vw, 24px);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.hero-people {
+  position: absolute;
+  left: 0.7%;
+  bottom: -120px;
+  z-index: 5;
+  display: block;
+  width: min(39%, 565px);
+  height: auto;
+  transform-origin: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Wish list / CTA ─── */
+.wish-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 120px;
+  padding: 24px 7.1% 24px 5%;
+  background: var(--paper);
+}
+
+.wish-link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 53.5%;
+  min-height: 72px;
+  padding: 15px 65px;
+  border-radius: 4px;
+  color: #fff;
+  background: var(--rose-brown);
+  font-family: var(--font-japanese);
+  font-weight: 400;
+  font-size: clamp(17px, 1.55vw, 23px);
+  letter-spacing: 0.09em;
+  text-align: center;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.wish-link:hover {
+  background: var(--rose-brown-hover);
+  transform: translateY(-2px);
+}
+
+.wish-arrow {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-54%);
+  font-family: Georgia, serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* ─── Coming Soon : solid colors only ─── */
+.coming-section {
+  padding: 24px 7.1% 100px 5%;
+  background: var(--paper);
+}
+
+.coming-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.coming-card {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1.82 / 1;
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 1.9vw, 29px);
+  font-weight: 400;
+  color: #fffaf6;
+  text-align: center;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.coming-card:hover {
+  filter: brightness(0.93);
+  transform: translateY(-3px);
+}
+
+.coming-card--one { background: #b7a49b; }
+.coming-card--two { background: #c0aaa2; }
+.coming-card--three { background: #ac988d; }
+.coming-card--four { background: #b8a79f; }
+
+/* ─── Footer ─── */
+.site-footer {
+  padding: 10px 24px 26px;
+  color: #9d8a80;
+  background: var(--paper);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.07em;
+  text-align: center;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 900px) {
+  .site-header { height: 72px; }
+  .header-inner { padding-inline: 4.5%; }
+  .main-nav { gap: 28px; }
+  .hero { height: 530px; }
+  .hero-copy { top: 28%; left: 7%; }
+  .hero-people { width: 49%; bottom: -96px; }
+  .wish-section { min-height: 111px; padding-inline: 4.5%; }
+  .wish-link { width: 56%; min-height: 64px; padding-inline: 40px; }
+  .wish-arrow { right: 20px; font-size: 27px; }
+  .coming-section { padding-inline: 4.5%; }
+  .coming-grid { gap: 12px; }
+  .coming-card { aspect-ratio: 1.5 / 1; font-size: 22px; }
+}
+
+/* ─── Smartphone ─── */
+@media (max-width: 650px) {
+  .site-header { height: 64px; }
+  .header-inner { padding-inline: 4.2%; gap: 12px; }
+  .logo-serif { font-size: clamp(24px, 5.7vw, 30px); }
+  .logo-script { font-size: clamp(29px, 7vw, 37px); margin-left: 5px; transform: translateY(5px) rotate(-5deg); }
+  .main-nav { gap: clamp(12px, 3vw, 24px); }
+  .nav-link { font-size: clamp(16px, 4vw, 20px); }
+  .nav-link::after { bottom: 12px; }
+
+  .hero {
+    height: clamp(490px, 128vw, 620px);
+    background-position: 58% center;
+  }
+  .hero-shade {
+    background: linear-gradient(180deg, rgba(28, 24, 22, 0.36) 0%, rgba(29, 25, 22, 0.16) 49%, rgba(22, 21, 19, 0.04) 79%);
+  }
+  .hero-copy { top: 10%; left: 7%; }
+  .hero-serif { font-size: clamp(48px, 10vw, 67px); }
+  .hero-script { margin-top: 14px; font-size: clamp(71px, 16vw, 95px); }
+  .hero-caption { margin-top: 18px; padding-top: 10px; font-size: clamp(14px, 3.7vw, 19px); letter-spacing: 0.09em; }
+  .hero-people {
+    width: min(93%, 450px);
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%);
+  }
+
+  .wish-section { min-height: 111px; padding: 19px 5%; }
+  .wish-link { width: 100%; min-height: 68px; padding: 13px 51px 13px 30px; font-size: 17px; }
+  .wish-arrow { right: 22px; }
+
+  .coming-section { padding: 9px 5% 60px; }
+  .coming-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .coming-card { aspect-ratio: 1.6 / 1; font-size: 23px; }
+}
+
+/* Very narrow phones: give the logo and navigation their own breathing room. */
+@media (max-width: 380px) {
+  .site-header { height: auto; }
+  .header-inner { flex-direction: column; gap: 4px; padding: 8px 12px 6px; }
+  .site-logo { align-self: center; }
+  .main-nav { align-self: center; gap: 36px; height: 31px; }
+  .nav-link::after { bottom: 0; }
+  .hero { height: 490px; }
+  .hero-serif { font-size: 46px; }
+  .hero-script { font-size: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -26,7 +399,7 @@
   </header>
 
   <main>
-    <!-- メインのカフェ写真：assets/cafe.jpg -->
+    <!-- メインのカフェ写真：pict/top-pict.jpg（CSSで指定） -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-shade" aria-hidden="true"></div>
 
@@ -38,7 +411,7 @@
         <p class="hero-caption">浜松の素敵なお店めぐり</p>
       </div>
 
-      <!-- 透過PNGの人物イラスト：assets/rina-saki.png -->
+      <!-- 透過PNGの人物イラスト：pict/rina-saki.png -->
       <img
         class="hero-people"
         src="pict/rina-saki.png"
@@ -50,7 +423,7 @@
 
     <!-- これから行きたいお店 -->
     <section class="wish-section" aria-label="行きたいお店へのリンク">
-      <a class="wish-link" href="next.html">
+      <a class="wish-link" href="hext.html">
         <span>これから行きたいお店</span>
         <span class="wish-arrow" aria-hidden="true">→</span>
       </a>
