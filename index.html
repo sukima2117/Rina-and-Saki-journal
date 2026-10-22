@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -293,10 +294,35 @@ a:focus-visible {
   line-height: 1;
 }
 
-/* ─── Cafe journal cards ─── */
+/* ─── Our Visits / 訪れたお店の記録 ─── */
 .coming-section {
-  padding: 24px 7.1% 100px 5%;
+  padding: 30px 7.1% 100px 5%;
   background: var(--paper);
+  scroll-margin-top: 20px;
+}
+
+.visits-heading {
+  margin: 0 0 28px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #d8c9c0;
+}
+
+.visits-heading h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(42px, 4.5vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: .015em;
+}
+
+.visits-heading p {
+  margin: 8px 0 0;
+  color: #9d8a80;
+  font-family: var(--font-japanese);
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: .12em;
 }
 
 .coming-grid {
@@ -327,7 +353,7 @@ a:focus-visible {
 .coming-card--one { background: #b7a49b; }
 .coming-card--two { background: #c0aaa2; }
 .coming-card--three { background: #ac988d; }
- .coming-card--four { background: #b8a79f; }
+.coming-card--four { background: #b8a79f; }
 
 /* 最初のカードは、写真＋店名＋訪問日のセット */
 .cafe-entry { min-width: 0; }
@@ -372,7 +398,6 @@ a:focus-visible {
   .cafe-entry-name { font-size: 22px; }
   .cafe-entry-date { font-size: 16px; }
 }
-
 
 /* ─── Footer ─── */
 .site-footer {
@@ -442,7 +467,10 @@ a:focus-visible {
   .wish-link { width: 100%; min-height: 68px; padding: 13px 51px 13px 30px; font-size: 17px; }
   .wish-arrow { right: 22px; }
 
-  .coming-section { padding: 9px 5% 60px; }
+  .coming-section { padding: 18px 5% 60px; }
+  .visits-heading { margin-bottom: 22px; padding-bottom: 15px; }
+  .visits-heading h2 { font-size: 44px; }
+  .visits-heading p { font-size: 11px; }
   .coming-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .coming-card { aspect-ratio: 1.6 / 1; font-size: 23px; }
 }
@@ -475,7 +503,7 @@ a:focus-visible {
 
       <nav class="main-nav" aria-label="メインナビゲーション">
         <a class="nav-link is-current" href="index.html" aria-current="page">Home</a>
-        <a class="nav-link" href="list.html">Cafe List</a>
+        <a class="nav-link" href="#our-visits">Journal</a>
       </nav>
     </div>
   </header>
@@ -511,17 +539,23 @@ a:focus-visible {
       </a>
     </section>
 
-    <!-- 訪問済みのカフェ1軒＋Coming Soon 3軒 -->
-    <section class="coming-section" aria-label="今後紹介するお店">
+    <!-- ふたりで訪れたお店の記録 -->
+    <section class="coming-section" id="our-visits" aria-labelledby="visits-title">
+      <div class="visits-heading">
+        <h2 id="visits-title">Our Visits</h2>
+        <p>ふたりで行ったお店</p>
+      </div>
+
       <div class="coming-grid">
         <!-- 1軒目：ボヌールコーヒー。写真も店名もクリックで日記へ -->
         <article class="cafe-entry">
           <a class="cafe-entry-photo" href="bonheur.html" aria-label="Bonheur Coffeeのカフェ日記を見る">
             <img src="pict/bonheur/bonheur05.jpg" alt="ボヌールコーヒーで撮ったバスクチーズケーキとラテ" loading="lazy">
           </a>
-          <h2 class="cafe-entry-name"><a href="bonheur.html">Bonheur Coffee</a></h2>
+          <h3 class="cafe-entry-name"><a href="bonheur.html">Bonheur Coffee</a></h3>
           <p class="cafe-entry-date"><time datetime="2026-10-22">2026.10.22</time></p>
         </article>
+
         <a class="coming-card coming-card--two" href="comingsoon.html" aria-label="Coming Soon 2">
           <span>Coming Soon</span>
         </a>
