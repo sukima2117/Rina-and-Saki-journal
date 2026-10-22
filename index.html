@@ -232,15 +232,19 @@ a:focus-visible {
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
-.hero-people {
-  width: 55%;
-  max-width: 270px;
-  height: auto;
-  left: 4%;
-  bottom: 0;
-  transform: none;
-}
 
+.hero-people {
+  position: absolute;
+  left: 0.7%;
+  bottom: -120px;
+  z-index: 5;
+  display: block;
+  width: min(33.2%, 480px);
+  height: auto;
+  transform-origin: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
 
 /* ─── Wish list / CTA ─── */
 .wish-section {
@@ -426,10 +430,12 @@ a:focus-visible {
   .hero-script { margin-top: 5px; font-size: clamp(76px, 19vw, 108px); }
   .hero-caption { margin-top: 10px; padding-top: 10px; font-size: clamp(14px, 3.7vw, 19px); letter-spacing: 0.09em; }
   .hero-people {
-    width: min(93%, 450px);
-    left: 50%;
-    bottom: -4px;
-    transform: translateX(-50%);
+    width: 55%;
+    max-width: 270px;
+    height: auto;
+    left: 4%;
+    bottom: 0;
+    transform: none;
   }
 
   .wish-section { min-height: 111px; padding: 19px 5%; }
