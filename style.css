@@ -133,7 +133,7 @@ a:focus-visible {
 .hero {
   position: relative;
   height: clamp(510px, 42vw, 675px);
-  background: #c5bbab url('pict/top-pict.jpg') center 73% / cover no-repeat;
+  background: #c5bbab url('pict/top-pict.jpg') center 84% / cover no-repeat;
 }
 
 .hero-shade {
