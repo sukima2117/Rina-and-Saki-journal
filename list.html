@@ -7,7 +7,6 @@
   <meta name="description" content="Rina &amp; Saki Journal｜行ったお店・行きたいお店の一覧。">
   <meta name="theme-color" content="#f8f5f2">
   <title>List | Rina &amp; Saki Journal</title>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Mrs+Saint+Delafield&family=Noto+Serif+JP:wght@400;500&display=swap');
 
@@ -136,21 +135,10 @@
       table-layout: fixed;
     }
 
-    .shop-table col:nth-child(1) {
-      width: 36%;
-    }
-
-    .shop-table col:nth-child(2) {
-      width: 29%;
-    }
-
-    .shop-table col:nth-child(3) {
-      width: 22%;
-    }
-
-    .shop-table col:nth-child(4) {
-      width: 13%;
-    }
+    .shop-table col:nth-child(1) { width: 36%; }
+    .shop-table col:nth-child(2) { width: 29%; }
+    .shop-table col:nth-child(3) { width: 22%; }
+    .shop-table col:nth-child(4) { width: 13%; }
 
     .shop-table th {
       text-align: left;
@@ -235,8 +223,7 @@
       color: #998278;
     }
 
-    /* スマホ：2列カード */
-    /* ステータスは必ず各カードの右下 */
+    /* スマホ：枠なし・1店舗1行・右端にステータス */
     @media (max-width: 700px) {
       .site-header {
         height: 62px;
@@ -266,7 +253,7 @@
       }
 
       .intro {
-        padding: 21px 12px 19px;
+        padding: 18px 12px 16px;
       }
 
       .intro-kicker {
@@ -296,62 +283,64 @@
         display: none;
       }
 
-      .shop-table tbody {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: stretch;
-        gap: 10px;
-      }
-
       .shop-table tbody tr {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        min-height: 160px;
-        padding: 12px 12px 11px;
-        background: #fffdfa;
-        border: 1px solid var(--line);
-        border-radius: 3px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        gap: 0 10px;
+        align-items: center;
+        padding: 9px 2px 10px;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
       }
 
       .shop-table tbody tr:hover {
-        background: #fffdfa;
+        background: transparent;
       }
 
       .shop-table td,
       .shop-table td:last-child {
         display: block;
+        width: auto;
         padding: 0;
-        width: 100%;
         text-align: left;
         font-size: 11px;
-        line-height: 1.55;
+        line-height: 1.5;
       }
 
       .shop-table td.shop-name {
-        margin-bottom: 8px;
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0 0 3px;
       }
 
       .shop-table td.shop-name a {
         font-size: 13px;
-        line-height: 1.55;
+        line-height: 1.45;
       }
 
       .shop-table td[data-label="Genre"] {
+        grid-column: 1;
+        grid-row: 2;
         color: #88776b;
-        margin-bottom: 4px;
+        font-size: 10px;
       }
 
       .shop-table td[data-label="Area"] {
+        grid-column: 1;
+        grid-row: 3;
         color: #967f71;
+        font-size: 10px;
       }
 
       .shop-table td[data-label="Status"] {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        margin-top: auto;
-        padding-top: 10px;
+        grid-column: 2;
+        grid-row: 1 / 4;
+        justify-self: end;
+        align-self: center;
+        text-align: right;
+        white-space: nowrap;
       }
 
       .status {
@@ -367,28 +356,14 @@
     }
 
     @media (max-width: 355px) {
-      .brand-name {
-        font-size: 20px;
-      }
-
-      .brand-script {
-        font-size: 25px;
-      }
-
-      .main-nav {
-        gap: 11px;
-      }
-
-      .main-nav a {
-        font-size: 16px;
-      }
-
-      .shop-table tbody tr {
-        padding: 10px 9px;
-      }
-
-      .shop-table td.shop-name a {
-        font-size: 12px;
+      .brand-name { font-size: 20px; }
+      .brand-script { font-size: 25px; }
+      .main-nav { gap: 11px; }
+      .main-nav a { font-size: 16px; }
+      .shop-table td.shop-name a { font-size: 12px; }
+      .status {
+        min-width: 70px;
+        padding: 5px 8px;
       }
     }
   </style>
