@@ -9,7 +9,9 @@
   <title>Cafe Wishlist | Rina &amp; Saki Journal</title>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Mrs+Saint+Delafield&family=Noto+Serif+JP:wght@400;500;600&display=swap');
+
 :root{--paper:#f8f5f2;--paper-deep:#f4eeea;--white:#fffdfb;--ink:#604d43;--muted:#897b74;--rose-brown:#a88b7f;--rose-brown-hover:#937568;--border:#e7dfd9;--serif:'Cormorant Garamond',Georgia,serif;--script:'Mrs Saint Delafield','Apple Chancery',cursive;--jp:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif}
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:30px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--jp);-webkit-font-smoothing:antialiased}
@@ -62,12 +64,14 @@ a:focus-visible{outline:3px solid #805a49;outline-offset:4px}
 .back-link:hover{color:#8b6b5e}
 .site-footer{text-align:center;background:#f1eae5;border-top:1px solid #e8ddd7;padding:26px 18px 30px}
 .site-footer small{font:400 15px/1.4 var(--serif);letter-spacing:.08em;color:#90796c}
+
 @media(min-width:1040px){
   .shop{padding:29px 32px 25px}
   .shop-details{gap:11px}
   .shop-details dd{font-size:13px}
   .shop-details dt{font-size:12px}
 }
+
 @media(max-width:720px){
   .hero{min-height:280px;padding:60px 18px}
   .wishlist{padding:40px 18px 76px}
@@ -80,6 +84,7 @@ a:focus-visible{outline:3px solid #805a49;outline-offset:4px}
   .shop-links{margin-top:23px;padding-top:16px}
   .section-title{font-size:40px}
 }
+
 @media(max-width:460px){
   .site-header{height:66px}
   .header-inner{padding:0 18px;gap:8px}
@@ -114,9 +119,11 @@ a:focus-visible{outline:3px solid #805a49;outline-offset:4px}
 .shop--visited .shop-links{border-color:#d6e1d1}
 .shop--visited .shop-links a{color:#4f7550;text-decoration-color:#a8c0a5}
 .shop--visited .shop-links a:hover{color:#344f37}
+
 @media(max-width:720px){
   .visited-section .cards{grid-template-columns:1fr}
 }
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
@@ -131,7 +138,7 @@ a:focus-visible{outline:3px solid #805a49;outline-offset:4px}
       </a>
       <nav class="main-nav" aria-label="メインナビゲーション">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#cafe-list" class="nav-link">Cafe List</a>
+        <a href="list.html" class="nav-link">List</a>
       </nav>
     </div>
   </header>
