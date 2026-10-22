@@ -1,3 +1,258 @@
+/*
+ * Rina & Saki Journal
+ * HTML + CSSのみで制作 / JavaScript不使用
+ * 画像：pict/top-pict.jpg と pict/rina-saki.png の2点のみ
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Great+Vibes&family=Noto+Serif+JP:wght@400;500&display=swap');
+
+:root {
+  --paper: #f8f5f2;
+  --paper-deep: #f4eeea;
+  --ink: #604d43;
+  --rose-brown: #a88b7f;
+  --rose-brown-hover: #937568;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-script: 'Great Vibes', 'Z003', 'Apple Chancery', 'Brush Script MT', cursive;
+  --font-japanese: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 3px solid #734d3f;
+  outline-offset: 5px;
+}
+
+/* ─── Header ─── */
+.site-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 76px;
+  background: rgba(250, 247, 245, 0.97);
+}
+
+.header-inner {
+  height: 100%;
+  padding-inline: 5% 7.1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  min-width: 0;
+  color: #544439;
+}
+
+.logo-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.logo-script {
+  font-family: var(--font-script);
+  font-size: clamp(34px, 3.45vw, 51px);
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 11px;
+  transform: translateY(7px) rotate(-5deg);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  align-self: stretch;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: 0.008em;
+  transition: color 160ms ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #8b6b5e;
+}
+
+.nav-link:hover::after,
+.nav-link.is-current::after {
+  transform: scaleX(1);
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  height: clamp(510px, 42vw, 675px);
+  background: #c5bbab url('pict/top-pict.jpg') center 73% / cover no-repeat;
+}
+
+.hero-shade {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 22, 18, 0.34) 0%, rgba(25, 27, 22, 0.20) 31%, rgba(26, 27, 22, 0.01) 63%);
+  pointer-events: none;
+}
+
+.hero-copy {
+  position: absolute;
+  top: 31.2%;
+  left: 7.5%;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 2px 9px rgba(36, 28, 23, 0.34);
+}
+
+.hero-heading {
+  margin: 0;
+  font-weight: 400;
+}
+
+.hero-serif {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(58px, 5.6vw, 84px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0.012em;
+  white-space: nowrap;
+}
+
+.hero-script {
+  display: block;
+  margin-top: 19px;
+  padding-left: 1px;
+  font-family: var(--font-script);
+  font-size: clamp(70px, 6.7vw, 102px);
+  font-weight: 400;
+  line-height: 0.91;
+  transform: rotate(-4deg);
+  transform-origin: left center;
+}
+
+.hero-caption {
+  margin: 25px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.94);
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-japanese);
+  font-size: clamp(18px, 1.63vw, 24px);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.hero-people {
+  position: absolute;
+  left: 0.7%;
+  bottom: -120px;
+  z-index: 5;
+  display: block;
+  width: min(39%, 565px);
+  height: auto;
+  transform-origin: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Wish list / CTA ─── */
+.wish-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 120px;
+  padding: 24px 7.1% 24px 5%;
+  background: var(--paper);
+}
+
+.wish-link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 53.5%;
+  min-height: 72px;
+  padding: 15px 65px;
+  border-radius: 4px;
+  color: #fff;
+  background: var(--rose-brown);
+  font-family: var(--font-japanese);
+  font-weight: 400;
+  font-size: clamp(17px, 1.55vw, 23px);
+  letter-spacing: 0.09em;
+  text-align: center;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.wish-link:hover {
+  background: var(--rose-brown-hover);
+  transform: translateY(-2px);
+}
+
+.wish-arrow {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-54%);
+  font-family: Georgia, serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
+}
 
 /* ─── Coming Soon : solid colors only ─── */
 .coming-section {
@@ -87,7 +342,7 @@
     width: min(93%, 450px);
     left: 50%;
     bottom: -4px;
-    transform: translateX(-50%) scaleY(0.92);
+    transform: translateX(-50%);
   }
 
   .wish-section { min-height: 111px; padding: 19px 5%; }
