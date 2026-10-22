@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rina &amp; Saki Journal｜ふたりの行ってみたいカフェやお店をまとめたリスト。">
+  <meta name="theme-color" content="#f8f5f2">
+  <title>Cafe Wishlist | Rina &amp; Saki Journal</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Mrs+Saint+Delafield&family=Noto+Serif+JP:wght@400;500;600&display=swap');
+:root{--paper:#f8f5f2;--paper-deep:#f4eeea;--white:#fffdfb;--ink:#604d43;--muted:#897b74;--rose-brown:#a88b7f;--rose-brown-hover:#937568;--border:#e7dfd9;--serif:'Cormorant Garamond',Georgia,serif;--script:'Mrs Saint Delafield','Apple Chancery',cursive;--jp:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--jp);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid #805a49;outline-offset:4px}
+.site-header{height:76px;background:rgba(250,247,245,.97);border-bottom:1px solid #eee6e0}
+.header-inner{height:100%;padding-inline:5% 7.1%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-logo{display:inline-flex;align-items:baseline;white-space:nowrap;color:#544439;flex-shrink:0}
+.logo-serif{font:400 clamp(26px,2.7vw,40px)/1 var(--serif)}
+.logo-script{font:400 clamp(32px,3.35vw,49px)/1 var(--script);margin-left:7px;transform:translateY(8px) rotate(-4deg)}
+.main-nav{align-self:stretch;display:flex;gap:clamp(24px,5vw,70px);align-items:center}
+.nav-link{font:500 clamp(19px,1.7vw,26px)/1 var(--serif);position:relative;white-space:nowrap;transition:color .2s}
+.nav-link:hover{color:var(--rose-brown-hover)}
+.nav-link::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-link:hover::after{transform:scaleX(1)}
+.hero{min-height:310px;padding:70px 24px 63px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(155deg,#f9f5f2 6%,#f2e8e2 100%)}
+.hero::before,.hero::after{content:'';position:absolute;border:1px solid #e0cfc4;border-radius:50%;width:480px;height:480px;pointer-events:none;opacity:.45}
+.hero::before{left:calc(50% - 670px);top:-310px}
+.hero::after{right:calc(50% - 620px);bottom:-390px}
+.hero>*{position:relative;z-index:1}
+.kicker{font:500 13px/1.4 var(--serif);letter-spacing:.26em;text-transform:uppercase;color:var(--rose-brown-hover);margin:0 0 12px}
+.hero h1{font:500 clamp(58px,8.3vw,106px)/.95 var(--serif);letter-spacing:-.035em;margin:0 0 15px}
+.hero-ja{font-size:clamp(12px,1.4vw,15px);letter-spacing:.24em;margin:0;color:#766357}
+.hero-line{width:42px;height:1px;background:#b69b8d;margin:20px auto 16px}
+.hero-count{font:500 14px/1.5 var(--serif);letter-spacing:.16em;color:var(--rose-brown-hover);margin:0}
+.wishlist{max-width:1170px;margin:0 auto;padding:56px 28px 100px}
+.section{scroll-margin-top:25px}
+.section+.section{margin-top:77px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;padding-bottom:16px;margin-bottom:25px;border-bottom:1px solid #cfbeb4}
+.section-title{font:500 clamp(35px,4.2vw,52px)/1.1 var(--serif);margin:0;letter-spacing:.015em}
+.section-note{display:block;margin-top:6px;font:400 12px/1.5 var(--jp);letter-spacing:.11em;color:var(--muted)}
+.section-total{font:500 13px/1.4 var(--serif);letter-spacing:.18em;color:var(--rose-brown);white-space:nowrap;padding-bottom:5px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.shop{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:26px 28px 24px;display:flex;flex-direction:column;min-width:0;box-shadow:0 6px 24px rgba(79,58,45,.025);transition:border-color .2s,transform .2s,box-shadow .2s}
+.shop:hover{transform:translateY(-2px);border-color:#d4bfb3;box-shadow:0 8px 30px rgba(79,58,45,.055)}
+.shop-top{display:flex;align-items:center;justify-content:flex-start;gap:10px;margin-bottom:12px}
+.shop-genre{color:#8a7669;background:#f5eeea;padding:7px 11px;border-radius:30px;font:400 10px/1.5 var(--jp);letter-spacing:.03em;text-align:right}
+.shop-name{font:500 clamp(18px,2vw,22px)/1.65 var(--jp);letter-spacing:.035em;margin:0 0 20px;overflow-wrap:anywhere}
+.shop-details{margin:0;display:grid;gap:10px}
+.shop-details>div{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:10px;align-items:start}
+.shop-details dt{font:500 11px/1.9 var(--jp);color:#a18b80;letter-spacing:.06em;white-space:nowrap}
+.shop-details dd{font:400 12px/1.9 var(--jp);margin:0;overflow-wrap:anywhere}
+.shop-links{border-top:1px solid #eee8e3;margin-top:auto;padding-top:18px;margin-bottom:0;display:flex;flex-wrap:wrap;gap:10px 20px;padding-inline:0;list-style:none}
+.shop-links a{display:inline-flex;gap:7px;align-items:center;color:#8c7062;font:500 12px/1.5 var(--jp);text-decoration:underline;text-underline-offset:4px;text-decoration-color:#cbb7a9;transition:color .2s}
+.shop-links a:hover{color:#5f463a}
+.shop-links .arrow{font-family:Arial,sans-serif;font-size:13px;text-decoration:none}
+.note{margin:55px auto 0;text-align:center;font-size:11px;line-height:2.1;color:#8a7a70;letter-spacing:.05em}
+.back-row{text-align:center;margin-top:36px}
+.back-link{font:500 14px/1.5 var(--serif);letter-spacing:.04em;display:inline-flex;gap:12px;align-items:center;border-bottom:1px solid #a88b7f;padding-bottom:6px}
+.back-link:hover{color:#8b6b5e}
+.site-footer{text-align:center;background:#f1eae5;border-top:1px solid #e8ddd7;padding:26px 18px 30px}
+.site-footer small{font:400 15px/1.4 var(--serif);letter-spacing:.08em;color:#90796c}
+@media(min-width:1040px){
+  .shop{padding:29px 32px 25px}
+  .shop-details{gap:11px}
+  .shop-details dd{font-size:13px}
+  .shop-details dt{font-size:12px}
+}
+@media(max-width:720px){
+  .hero{min-height:280px;padding:60px 18px}
+  .wishlist{padding:40px 18px 76px}
+  .cards{grid-template-columns:1fr;gap:14px}
+  .shop{padding:23px 22px 21px}
+  .section+.section{margin-top:58px}
+  .section-head{margin-bottom:18px}
+  .shop-name{font-size:19px;margin-bottom:17px}
+  .shop-details dd{font-size:12px}
+  .shop-links{margin-top:23px;padding-top:16px}
+  .section-title{font-size:40px}
+}
+@media(max-width:460px){
+  .site-header{height:66px}
+  .header-inner{padding:0 18px;gap:8px}
+  .logo-serif{font-size:23px}
+  .logo-script{font-size:27px;margin-left:4px;transform:translateY(6px) rotate(-4deg)}
+  .main-nav{gap:18px}
+  .nav-link{font-size:17px}
+  .hero{min-height:250px;padding:55px 14px}
+  .hero h1{font-size:60px}
+  .hero-ja{font-size:12px;letter-spacing:.16em}
+  .wishlist{padding:36px 14px 70px}
+  .shop{padding:22px 19px 20px}
+  .shop-details>div{grid-template-columns:62px minmax(0,1fr);gap:9px}
+  .shop-details dd{line-height:1.85}
+  .shop-genre{font-size:9px;max-width:70%}
+  .section-head{align-items:center}
+  .section-title{font-size:37px}
+}
+
+/* 訪問済みのお店 */
+.visited-section .section-head{border-bottom-color:#b8c7b7}
+.visited-section .section-note{color:#72826f}
+.visited-section .section-total{color:#72826f}
+.visited-section .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shop--visited{background:linear-gradient(145deg,#f3f6f0,#edf2e9);border-color:#cbd8c8;box-shadow:0 6px 24px rgba(77,101,73,.045)}
+.shop--visited:hover{border-color:#9aaf95;box-shadow:0 8px 30px rgba(77,101,73,.08)}
+.shop--visited .shop-top{justify-content:space-between;flex-wrap:wrap;gap:9px}
+.shop--visited .shop-genre{background:#dfe9d9;color:#5c7458}
+.visited-mark{display:inline-flex;align-items:center;gap:7px;color:#587153;font:500 11px/1.5 var(--jp);letter-spacing:.12em}
+.visited-mark .tick{display:inline-grid;place-items:center;background:#6c8769;color:#fff;border-radius:50%;width:19px;height:19px;font:bold 12px/1 Arial,sans-serif}
+.shop--visited .shop-details dt{color:#779171}
+.shop--visited .shop-links{border-color:#d6e1d1}
+.shop--visited .shop-links a{color:#4f7550;text-decoration-color:#a8c0a5}
+.shop--visited .shop-links a:hover{color:#344f37}
+@media(max-width:720px){
+  .visited-section .cards{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html" aria-label="Rina & Saki Journal ホーム">
+        <span class="logo-serif">Rina &amp; Saki</span><span class="logo-script">Journal</span>
+      </a>
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#cafe-list" class="nav-link">Cafe List</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-heading">
+      <p class="kicker">Rina &amp; Saki Journal</p>
+      <h1 id="page-heading">Cafe Wishlist</h1>
+      <p class="hero-ja">これから行きたいお店</p>
+      <div class="hero-line" aria-hidden="true"></div>
+      <p class="hero-count">21 TO VISIT&nbsp;&nbsp; · &nbsp;&nbsp;1 VISITED</p>
+    </section>
+
+    <div class="wishlist">
+      <section class="section" id="saki" aria-labelledby="saki-heading">
+        <div class="section-head">
+          <div><h2 class="section-title" id="saki-heading">Saki's Picks</h2><span class="section-note">Sakiの行きたいお店</span></div>
+          <span class="section-total">03 PLACES</span>
+        </div>
+        <div class="cards">
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">カフェ・アフタヌーンティー</span></div>
+            <h3 class="shop-name">Maple Café（メープルカフェ）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区広沢2-27-29 広沢プラザ1F</dd></div>
+              <div><dt>営業時間</dt><dd>11:00〜17:00（L.O.16:30）</dd></div>
+              <div><dt>お休み</dt><dd>水曜・第2木曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり（共用19台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Maple Caféの関連リンク">
+              <li><a href="https://www.maplecafe-hirosawa.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.maplecafe-hirosawa.com/access/" target="_blank" rel="noopener noreferrer">アクセス・駐車場 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">パン屋・カフェ</span></div>
+            <h3 class="shop-name">GARAGE BAKERY &amp; COFFEE</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区佐藤2-20-22</dd></div>
+              <div><dt>営業時間</dt><dd>9:00〜16:30</dd></div>
+              <div><dt>お休み</dt><dd>公式Instagramでご確認ください</dd></div>
+              <div><dt>駐車場</dt><dd>あり（共用）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="GARAGE BAKERY &amp; COFFEEの関連リンク">
+              <li><a href="https://www.instagram.com/garagebakery_and_coffee/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://retty.me/area/PRE22/ARE79/SUB7901/100000833573/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">パン屋</span></div>
+            <h3 class="shop-name">やま市パン商店</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区高林3-8-19</dd></div>
+              <div><dt>営業時間</dt><dd>9:00〜売り切れ次第終了</dd></div>
+              <div><dt>お休み</dt><dd>日曜・月曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="やま市パン商店の関連リンク">
+              <li><a href="https://www.instagram.com/yamaichipanshouten/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22030088/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="rina" aria-labelledby="rina-heading">
+        <div class="section-head">
+          <div><h2 class="section-title" id="rina-heading">Rina's Picks</h2><span class="section-note">Rinaの行きたいお店</span></div>
+          <span class="section-total">18 PLACES</span>
+        </div>
+        <div class="cards">
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">自然派カフェ・ランチ</span></div>
+            <h3 class="shop-name">鎮cafe（しずカフェ）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区引佐町四方浄30-12</dd></div>
+              <div><dt>営業時間</dt><dd>木・金・土曜 10:00〜15:00</dd></div>
+              <div><dt>お休み</dt><dd>日曜〜水曜 ※営業日は要確認</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="鎮cafeの関連リンク">
+              <li><a href="https://www.instagram.com/shizucafe_inasa/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://loco.kufu.jp/shizuoka/articles/original/808" target="_blank" rel="noopener noreferrer">店舗紹介 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">スープカレー・フレンチトースト</span></div>
+            <h3 class="shop-name">Fond Cafe（フォンドカフェ）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区細江町気賀213 パンプキンズハウス1F</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜18:00（L.O.17:30）</dd></div>
+              <div><dt>お休み</dt><dd>月曜・第2、第4火曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり（3台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Fond Cafeの関連リンク">
+              <li><a href="https://www.instagram.com/fondcafe/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.at-s.com/gourmet/article/859595" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">カフェ・自家焙煎コーヒー</span></div>
+            <h3 class="shop-name">自家焙煎珈琲 Loop</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区中瀬7192-3</dd></div>
+              <div><dt>営業時間</dt><dd>月・火・土・日曜 8:00〜18:00</dd></div>
+              <div><dt>お休み</dt><dd>水・木・金曜、不定休あり</dd></div>
+              <div><dt>駐車場</dt><dd>あり（5台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Loopの関連リンク">
+              <li><a href="https://www.instagram.com/coffee_tea_loop/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22043316/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">カフェ・ティラミス・ワッフル</span></div>
+            <h3 class="shop-name">カフェルーム エトランジェ</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区小沢渡町1064-4</dd></div>
+              <div><dt>営業時間</dt><dd>13:00〜17:00</dd></div>
+              <div><dt>お休み</dt><dd>火〜金曜（営業日はInstagramで確認）</dd></div>
+              <div><dt>駐車場</dt><dd>お店でご確認ください</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="エトランジェの関連リンク">
+              <li><a href="https://www.instagram.com/caferoometranger/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://jimoto-yell.com/special/hamamatsu-cafe/" target="_blank" rel="noopener noreferrer">店舗紹介 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">喫茶・ケーキ・カレー</span></div>
+            <h3 class="shop-name">喫茶みちくさ</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区頭陀寺町350-7</dd></div>
+              <div><dt>営業時間</dt><dd>日曜11:00〜17:00／月・火曜12:00〜18:00</dd></div>
+              <div><dt>お休み</dt><dd>水〜土曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="喫茶みちくさの関連リンク">
+              <li><a href="https://www.instagram.com/kissamichikusa/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22034956/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">コーヒースタンド</span></div>
+            <h3 class="shop-name">かもめの珈琲屋さん 湖舶店</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区三ヶ日町大崎45</dd></div>
+              <div><dt>営業時間</dt><dd>9:00〜18:00</dd></div>
+              <div><dt>お休み</dt><dd>火曜・水曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり（店舗西側3台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="かもめの珈琲屋さんの関連リンク">
+              <li><a href="https://kamome-coffeeroaster.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.instagram.com/kamome.co.free/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">カフェ・スイーツ</span></div>
+            <h3 class="shop-name">cafe 月のらんぷ</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市天竜区月864</dd></div>
+              <div><dt>営業時間</dt><dd>11:00〜17:00</dd></div>
+              <div><dt>お休み</dt><dd>水曜・木曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="月のらんぷの関連リンク">
+              <li><a href="https://www.instagram.com/cafe_tsukinolamp/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22045917/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">自家焙煎コーヒー・カフェ</span></div>
+            <h3 class="shop-name">ties coffee roaster</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区三方原町195-2</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜20:00</dd></div>
+              <div><dt>お休み</dt><dd>水曜・不定休</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="ties coffee roasterの関連リンク">
+              <li><a href="https://tiescoffee.base.shop/about" target="_blank" rel="noopener noreferrer">公式ショップ・お店紹介 <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.instagram.com/tiescoffeeroaster/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">日本茶・和スイーツ・お茶漬け</span></div>
+            <h3 class="shop-name">お茶の間のおと</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区半田山5-25-1</dd></div>
+              <div><dt>営業時間</dt><dd>月・金曜10:30〜16:30／土・日曜9:00〜16:30</dd></div>
+              <div><dt>お休み</dt><dd>火・水・木曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="お茶の間のおとの関連リンク">
+              <li><a href="https://ocha-noto.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22029320/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">どらやき</span></div>
+            <h3 class="shop-name">くろーばー結び 浜名店</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区本沢合795</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜18:30</dd></div>
+              <div><dt>お休み</dt><dd>水曜（繁忙期は営業の場合あり）</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="くろーばー結びの関連リンク">
+              <li><a href="https://clover-musubi.jp/about" target="_blank" rel="noopener noreferrer">公式店舗案内 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">プリン・焼き菓子</span></div>
+            <h3 class="shop-name">BUTTON 小さな瓶のお菓子屋さん</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区沼246-1 久島ビル102</dd></div>
+              <div><dt>営業時間</dt><dd>店舗 10:00〜18:00／イートイン 11:00〜16:00</dd></div>
+              <div><dt>お休み</dt><dd>不定休</dd></div>
+              <div><dt>駐車場</dt><dd>あり（2台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="BUTTONの関連リンク">
+              <li><a href="https://button-hamakita.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.instagram.com/button_hamakita/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">ケーキ・スイーツ・焼き菓子</span></div>
+            <h3 class="shop-name">A.C.L（アルク）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区早出町1235-6</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜18:00（売り切れ次第終了の場合あり）</dd></div>
+              <div><dt>お休み</dt><dd>月曜・隔週火曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="A.C.Lの関連リンク">
+              <li><a href="https://aclcake.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.instagram.com/arc_en_ciel_lunaire/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">モーニング・ランチ・カフェ</span></div>
+            <h3 class="shop-name">さんたまcafe</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区呉松町3786-1</dd></div>
+              <div><dt>営業時間</dt><dd>9:00〜16:00（モーニング9:00〜／ランチ11:00〜／カフェ14:00〜）</dd></div>
+              <div><dt>お休み</dt><dd>木曜</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="さんたまcafeの関連リンク">
+              <li><a href="https://www.instagram.com/sunsmile.tamago/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://tabelog.com/shizuoka/A2202/A220201/22045625/" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">野菜のデリ・生はちみつスイーツ</span></div>
+            <h3 class="shop-name">Naturest（ナチュレスト）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区大島町1404-2</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜16:00</dd></div>
+              <div><dt>お休み</dt><dd>土曜・日曜（営業日についてはInstagramで確認）</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Naturestの関連リンク">
+              <li><a href="https://www.instagram.com/naturest_gram/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.at-s.com/gourmet/article/1150429" target="_blank" rel="noopener noreferrer">店舗紹介 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">モーニング・ランチ・カフェ</span></div>
+            <h3 class="shop-name">ROBIN（ロビン）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区積志町1303-2</dd></div>
+              <div><dt>営業時間</dt><dd>8:00〜17:00（L.O.16:30）</dd></div>
+              <div><dt>お休み</dt><dd>月曜・不定休</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="ROBINの関連リンク">
+              <li><a href="https://robin-2o23.therestaurant.jp/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.instagram.com/robin_2o23/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">ケーキ・シュークリーム・焼き菓子</span></div>
+            <h3 class="shop-name">あとりえMOMO 浜北店</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区寺島3270-10</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜18:30</dd></div>
+              <div><dt>お休み</dt><dd>定休なし</dd></div>
+              <div><dt>駐車場</dt><dd>あり（5台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="あとりえMOMOの関連リンク">
+              <li><a href="https://ateliermomo-sweets.com/shop/" target="_blank" rel="noopener noreferrer">公式店舗案内 <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.at-s.com/gourmet/article/1995134" target="_blank" rel="noopener noreferrer">店舗情報 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">クレープ</span></div>
+            <h3 class="shop-name">アツミクレープ</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市浜名区小松4510-2</dd></div>
+              <div><dt>営業時間</dt><dd>平日11:30〜17:00／土日祝11:00〜17:00</dd></div>
+              <div><dt>お休み</dt><dd>月曜・不定休</dd></div>
+              <div><dt>駐車場</dt><dd>あり（2台・店舗から少し離れた場所）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="アツミクレープの関連リンク">
+              <li><a href="https://www.instagram.com/atsumi_crepe/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.hamamatsu-startup.com/case/%E3%82%A2%E3%83%84%E3%83%9F%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%97/" target="_blank" rel="noopener noreferrer">店舗紹介 <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+
+          <article class="shop">
+            <div class="shop-top"><span class="shop-genre">プリン専門店</span></div>
+            <h3 class="shop-name">浜松プリン Priful（プリフル）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区湖東町5652-1 浜名湖グルメパーク内</dd></div>
+              <div><dt>営業時間</dt><dd>平日10:00〜15:00／土日祝10:00〜17:00</dd></div>
+              <div><dt>お休み</dt><dd>不定休</dd></div>
+              <div><dt>駐車場</dt><dd>あり</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Prifulの関連リンク">
+              <li><a href="https://hamamatsu-purin.com/" target="_blank" rel="noopener noreferrer">公式サイト <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section visited-section" id="visited" aria-labelledby="visited-heading">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" id="visited-heading">Visited Cafés</h2>
+            <span class="section-note">ふたりで行ったお店</span>
+          </div>
+          <span class="section-total">01 VISITED</span>
+        </div>
+
+        <div class="cards">
+          <article class="shop shop--visited">
+            <div class="shop-top">
+              <span class="visited-mark"><span class="tick" aria-hidden="true">✓</span> 行ったよ · 2026.10.22</span>
+              <span class="shop-genre">カフェ・スイーツ</span>
+            </div>
+            <h3 class="shop-name">Bonheur Coffee（ボヌールコーヒー）</h3>
+            <dl class="shop-details">
+              <div><dt>住所</dt><dd>浜松市中央区東三方町221-14</dd></div>
+              <div><dt>営業時間</dt><dd>10:00〜15:30（最新情報はInstagramで確認）</dd></div>
+              <div><dt>お休み</dt><dd>日・月・火曜・祝日（最新情報はInstagramで確認）</dd></div>
+              <div><dt>駐車場</dt><dd>あり（8台）</dd></div>
+            </dl>
+            <ul class="shop-links" aria-label="Bonheur Coffeeの関連リンク">
+              <li><a href="bonheur.html">ふたりのカフェ日記 <span class="arrow" aria-hidden="true">→</span></a></li>
+              <li><a href="https://www.instagram.com/bonheur_coffee/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%9C%E6%9D%BE%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%9D%B1%E4%B8%89%E6%96%B9%E7%94%BA221-14" target="_blank" rel="noopener noreferrer">地図を見る <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <p class="note">営業時間やお休みは変更になることがあります。<br>お出かけ前に、それぞれのお店の最新情報をチェックしてください。</p>
+      <div class="back-row">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><small>© Rina &amp; Saki Journal</small></footer>
+</body>
+</html>
