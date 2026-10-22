@@ -12,7 +12,7 @@
 /*
  * Rina & Saki Journal
  * HTML + CSSのみで制作 / JavaScript不使用
- * 画像：pict/top-pict.jpg と pict/rina-saki.png の2点のみ
+ * 画像：pict/top-pict.jpg、pict/rina-saki.png、pict/bonheur/bonheur05.jpg
  */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Mrs+Saint+Delafield&family=Noto+Serif+JP:wght@400;500&display=swap');
 
@@ -293,7 +293,7 @@ a:focus-visible {
   line-height: 1;
 }
 
-/* ─── Coming Soon : solid colors only ─── */
+/* ─── Cafe journal cards ─── */
 .coming-section {
   padding: 24px 7.1% 100px 5%;
   background: var(--paper);
@@ -327,7 +327,52 @@ a:focus-visible {
 .coming-card--one { background: #b7a49b; }
 .coming-card--two { background: #c0aaa2; }
 .coming-card--three { background: #ac988d; }
-.coming-card--four { background: #b8a79f; }
+ .coming-card--four { background: #b8a79f; }
+
+/* 最初のカードは、写真＋店名＋訪問日のセット */
+.cafe-entry { min-width: 0; }
+.cafe-entry-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.82 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #d9c9be;
+}
+.cafe-entry-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 64%;
+  transition: transform 250ms ease;
+}
+.cafe-entry-photo:hover img { transform: scale(1.035); }
+.cafe-entry-name {
+  margin: 12px 0 2px;
+  font-family: var(--font-serif);
+  font-size: clamp(23px, 2vw, 29px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .015em;
+}
+.cafe-entry-name a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cafe-entry-date {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 1.3vw, 19px);
+  letter-spacing: .08em;
+  color: #9c877e;
+}
+@media (max-width: 900px) {
+  .cafe-entry-photo { aspect-ratio: 1.5 / 1; }
+}
+@media (max-width: 650px) {
+  .cafe-entry-photo { aspect-ratio: 1.6 / 1; }
+  .cafe-entry-name { font-size: 22px; }
+  .cafe-entry-date { font-size: 16px; }
+}
+
 
 /* ─── Footer ─── */
 .site-footer {
@@ -464,12 +509,17 @@ a:focus-visible {
       </a>
     </section>
 
-    <!-- 今後追加予定の4店舗。写真は使わず、無地のカードにしています。 -->
+    <!-- 訪問済みのカフェ1軒＋Coming Soon 3軒 -->
     <section class="coming-section" aria-label="今後紹介するお店">
       <div class="coming-grid">
-        <a class="coming-card coming-card--one" href="comingsoon.html" aria-label="Coming Soon 1">
-          <span>Coming Soon</span>
-        </a>
+        <!-- 1軒目：ボヌールコーヒー。写真も店名もクリックで日記へ -->
+        <article class="cafe-entry">
+          <a class="cafe-entry-photo" href="bonheur.html" aria-label="Bonheur Coffeeのカフェ日記を見る">
+            <img src="pict/bonheur/bonheur05.jpg" alt="ボヌールコーヒーで撮ったバスクチーズケーキとラテ" loading="lazy">
+          </a>
+          <h2 class="cafe-entry-name"><a href="bonheur.html">Bonheur Coffee</a></h2>
+          <p class="cafe-entry-date"><time datetime="2026-10-22">2026.10.22</time></p>
+        </article>
         <a class="coming-card coming-card--two" href="comingsoon.html" aria-label="Coming Soon 2">
           <span>Coming Soon</span>
         </a>
