@@ -22,6 +22,8 @@
       --serif: 'Cormorant Garamond', Georgia, serif;
       --script: 'Mrs Saint Delafield', cursive;
       --jp: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+      --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+      --font-script: 'Mrs Saint Delafield', 'Snell Roundhand', 'Apple Chancery', 'Z003', cursive;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -35,38 +37,93 @@
     a { color: inherit; text-decoration: none; }
     a:focus-visible { outline: 2px solid #8b6758; outline-offset: 3px; }
 
-    /* 共通ヘッダー */
-    .site-header { height: 72px; border-bottom: 1px solid var(--line); }
-    .header-inner {
-      width: min(1240px, 92%);
-      height: 100%;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-    .brand { display: inline-flex; align-items: baseline; white-space: nowrap; }
-    .brand-name { font: 400 clamp(25px, 2.8vw, 38px)/1 var(--serif); }
-    .brand-script {
-      font: 400 clamp(32px, 3.5vw, 47px)/1 var(--script);
-      color: #ad8776;
-      margin-left: 7px;
-      transform: translateY(7px) rotate(-4deg);
-    }
-    .main-nav { display: flex; gap: clamp(22px, 4vw, 58px); }
-    .main-nav a { position: relative; font: 400 clamp(19px, 2vw, 26px) var(--serif); }
-    .main-nav a[aria-current="page"]::after,
-    .main-nav a:hover::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      border-bottom: 1px solid currentColor;
-    }
+    /* ─── Header ─── */
+.site-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 76px;
+  background: rgba(250, 247, 245, 0.97);
+}
 
-    /* ページタイトル */
+.header-inner {
+  height: 100%;
+  padding-inline: 5% 7.1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  min-width: 0;
+  color: #544439;
+}
+
+.logo-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.logo-script {
+  font-family: var(--font-script);
+  font-size: clamp(34px, 3.35vw, 49px);
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 7px;
+  transform: translateY(8px) rotate(-4deg);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  align-self: stretch;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: 0.008em;
+  transition: color 160ms ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #8b6b5e;
+}
+
+.nav-link:hover::after,
+.nav-link.is-current::after {
+  transform: scaleX(1);
+}
+
+/* ページタイトル */
     .intro { padding: 20px 12px 18px; text-align: center; }
     .intro-kicker {
       margin: 0;
@@ -126,12 +183,6 @@
 
     /* スマホも枠なし。左に店舗情報、右にステータス。細い区切り線のみ */
     @media (max-width: 700px) {
-      .site-header { height: 62px; }
-      .header-inner { width: 94%; gap: 8px; }
-      .brand-name { font-size: 23px; }
-      .brand-script { font-size: 28px; margin-left: 4px; transform: translateY(5px) rotate(-4deg); }
-      .main-nav { gap: 17px; }
-      .main-nav a { font-size: 18px; }
       .intro { padding: 18px 12px 16px; }
       .intro-kicker { font-size: 11px; }
       h1 { font-size: 58px; }
@@ -190,25 +241,48 @@
       .note { padding: 0 2px; font-size: 10px; }
     }
     @media (max-width: 355px) {
-      .brand-name { font-size: 20px; }
-      .brand-script { font-size: 25px; }
-      .main-nav { gap: 11px; }
-      .main-nav a { font-size: 16px; }
       .shop-table td.shop-name a { font-size: 12px; }
       .status { min-width: 70px; padding: 5px 8px; }
+    }
+
+    /* Indexと同じヘッダー：タブレット */
+    @media (max-width: 900px) {
+      .site-header { height: 72px; }
+      .header-inner { padding-inline: 4.5%; }
+      .main-nav { gap: 28px; }
+    }
+
+    /* Indexと同じヘッダー：スマートフォン */
+    @media (max-width: 650px) {
+      .site-header { height: 64px; }
+      .header-inner { padding-inline: 4.2%; gap: 12px; }
+      .logo-serif { font-size: clamp(24px, 5.7vw, 30px); }
+      .logo-script { font-size: clamp(29px, 7vw, 37px); margin-left: 5px; transform: translateY(5px) rotate(-5deg); }
+      .main-nav { gap: clamp(12px, 3vw, 24px); }
+      .nav-link { font-size: clamp(16px, 4vw, 20px); }
+      .nav-link::after { bottom: -5px; }
+    }
+
+    /* Indexと同じヘッダー：幅の狭いスマートフォン */
+    @media (max-width: 380px) {
+      .site-header { height: auto; }
+      .header-inner { flex-direction: column; gap: 4px; padding: 8px 12px 6px; }
+      .site-logo { align-self: center; }
+      .main-nav { align-self: center; gap: 36px; height: 31px; }
+      .nav-link::after { bottom: -4px; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="Rina &amp; Saki Journal ホーム">
-        <span class="brand-name">Rina &amp; Saki</span>
-        <span class="brand-script">Journal</span>
+      <a class="site-logo" href="index.html" aria-label="Rina & Saki Journal ホーム">
+        <span class="logo-serif">Rina &amp; Saki</span>
+        <span class="logo-script">Journal</span>
       </a>
-      <nav class="main-nav" aria-label="メインメニュー">
-        <a href="index.html">Home</a>
-        <a href="list.html" aria-current="page">List</a>
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link is-current" href="list.html" aria-current="page">List</a>
       </nav>
     </div>
   </header>
